@@ -23,7 +23,32 @@ screen.onkey(leftController.down,"s")
 screen.onkey(rightController.up,'Up')
 screen.onkey(rightController.down,'Down')
 
-screen.update()
-sleep(0.09)
+game_is_on = True
+ball.initial_direction_ball()
+
+while game_is_on:
+    screen.update()
+    sleep(0.09)
+    ball.move_ball()
+
+    if ball.ycor() >= 280:
+        ball.direction_ball()
+    elif ball.ycor() <= -280:
+        ball.direction_ball()
+    elif ball.distance(leftController.controller[0]) < 30 or ball.distance(leftController.controller[1]) < 30 or ball.distance(leftController.controller[2]) < 30:
+        ball.direction_ball()
+    elif ball.distance(rightController.controller[0]) < 30 or ball.distance(rightController.controller[1]) < 30 or ball.distance(rightController.controller[2]) < 30:
+        ball.direction_ball()
+
+    if ball.xcor() > 495:
+        game_is_on = False
+        ball.game_over()
+        ball.hideturtle()
+    elif ball.xcor() < -495:
+        game_is_on = False
+        ball.game_over()
+        ball.hideturtle()
+
+
 
 screen.exitonclick()
