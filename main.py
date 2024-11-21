@@ -10,6 +10,7 @@ screen.setup(width=1000, height=600)
 screen.title("Pong Game")
 screen.bgcolor('grey20')
 screen.colormode(256)
+screen.tracer(0)
 
 
 leftController = LeftRightController('left')
@@ -27,18 +28,19 @@ game_is_on = True
 ball.initial_direction_ball()
 
 while game_is_on:
+
     screen.update()
-    sleep(0.09)
+    sleep(0.019)
     ball.move_ball()
 
     if ball.ycor() >= 280 or ball.ycor() <= -280:
         ball.direction_ball()
-    elif ball.distance(leftController.controller[0]) < 30 or ball.distance(leftController.controller[1]) < 30 or ball.distance(leftController.controller[2]) < 30:
+    elif ball.distance(leftController.controller[0]) < 60 or ball.distance(leftController.controller[1]) < 60 or ball.distance(leftController.controller[2]) < 60:
         ball.direction_ball()
-    elif ball.distance(rightController.controller[0]) < 30 or ball.distance(rightController.controller[1]) < 30 or ball.distance(rightController.controller[2]) < 30:
+    elif ball.distance(rightController.controller[0]) < 60 or ball.distance(rightController.controller[1]) < 60 or ball.distance(rightController.controller[2]) < 60:
         ball.direction_ball()
 
-    if ball.xcor() > 495 or ball.xcor() < -495:
+    if ball.xcor() > 500 or ball.xcor() < -500:
         game_is_on = False
         ball.game_over()
         ball.hideturtle()

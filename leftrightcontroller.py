@@ -17,14 +17,14 @@ class LeftRightController(Controller):
         for i in range(3):
             y = self.controller[i].pos()
             maximum = self.controller[2].pos()
-            if maximum[1] + 10 > 280:
+            if maximum[1] + 20 > 280:
                 break
-            self.controller[i].setpos(y[0], y[1] + 10)
+            self.controller[i].setpos(y[0], y[1] + 20)
 
     def down(self):
         for i in range(2,-1,-1):
             y = self.controller[i].pos()
             maximum = self.controller[0].pos()
-            if maximum[1] + 10 < -280:
+            if maximum[1] - 20 < -280:
                 break
-            self.controller[i].setpos(y[0], y[1] - 10)
+            self.controller[i].setpos(y[0], y[1] - 20)
